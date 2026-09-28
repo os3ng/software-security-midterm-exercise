@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CCSB5133 Software Security Midterm Study Hub</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2f;--panel2:#18233e;--text:#eef3ff;--muted:#aebbd6;--accent:#7dd3fc;--good:#86efac;--bad:#fca5a5;--warn:#fde68a;--line:#2b3a60}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#07101f,#10172b);color:var(--text)}
+header{padding:28px 20px 16px;max-width:1200px;margin:auto} h1{margin:0;font-size:clamp(26px,4vw,46px)} header p{color:var(--muted);max-width:900px;line-height:1.6}
+nav{position:sticky;top:0;z-index:10;background:#0b1020e8;backdrop-filter:blur(10px);border-block:1px solid var(--line)}
+.navin{max-width:1200px;margin:auto;padding:10px;display:flex;gap:8px;overflow:auto}.tab{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;white-space:nowrap}.tab.active{background:var(--accent);color:#07101f;font-weight:800}
+main{max-width:1200px;margin:auto;padding:22px}.view{display:none}.view.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 10px 30px #0003}.card h2,.card h3{margin-top:0}.card p,.card li{line-height:1.6;color:#d9e2f5}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#233152;color:var(--accent);font-size:12px;font-weight:700;margin:2px}.memory{border-left:4px solid var(--warn);padding:10px 12px;background:#2a2515;border-radius:8px;color:#fff4bf}.examtip{border-left:4px solid var(--good);padding:10px 12px;background:#13291e;border-radius:8px}
+details{border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0;background:#0f172b}summary{cursor:pointer;font-weight:800;color:var(--accent)}
+.flash{min-height:240px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:24px;padding:25px;cursor:pointer;user-select:none}.flash small{display:block;color:var(--muted);font-size:14px;margin-top:15px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}button{border:0;border-radius:11px;padding:10px 14px;background:var(--accent);color:#07101f;font-weight:800;cursor:pointer}button.secondary{background:#263554;color:var(--text)}button.danger{background:#7f1d1d;color:white}
+.q{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0f172b}.q label{display:block;padding:7px 8px;border-radius:8px;cursor:pointer}.q label:hover{background:#1a2745}.feedback{margin-top:8px;font-weight:700}.good{color:var(--good)}.bad{color:var(--bad)}
+textarea{width:100%;min-height:130px;background:#0b1224;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px}input[type="text"]{background:#0b1224;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#1b2948;color:var(--accent)}
+.progress{height:12px;background:#1b2948;border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--accent);width:0}.hero{display:grid;grid-template-columns:2fr 1fr;gap:16px}@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.kpi{font-size:34px;font-weight:900;color:var(--accent)}.muted{color:var(--muted)}.hidden{display:none}.search{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0b1224;color:white;margin-bottom:14px}
+</style>
+</head>
+<body>
+<header>
+<h1>CCSB5133 Software Security — Midterm Study Hub</h1>
+<p>Built from Chapters 1–3. Focus: understand the <b>story</b> of software security, then memorize the terms examiners can turn into MCQs and structured questions.</p>
+<div class="hero">
+<div class="card"><h3>Exam format</h3><p><b>Section A:</b> 20 MCQ = 20 marks<br><b>Section B:</b> 3 structured questions = 30 marks<br><b>Total:</b> 50 marks</p></div>
+<div class="card"><div class="kpi" id="mastery">0%</div><div class="muted">practice mastery</div><div class="progress"><div class="bar" id="masterybar"></div></div></div>
+</div>
+</header>
+
+<nav><div class="navin">
+<button class="tab active" data-view="overview">Start Here</button>
+<button class="tab" data-view="notes">Notes</button>
+<button class="tab" data-view="compare">Must-Compare</button>
+<button class="tab" data-view="flashcards">Flashcards</button>
+<button class="tab" data-view="quiz">Quick Quiz</button>
+<button class="tab" data-view="mock">Mock Midterm</button>
+</div></nav>
+
+<main>
+<section id="overview" class="view active">
+<div class="grid">
+<div class="card"><h2>🧠 The whole subject in one story</h2><p>You are building software. Normal testing asks: <b>“Does it work?”</b> Software security also asks: <b>“What happens when someone deliberately misuses it?”</b></p><p>So you identify risks early, design security into the SDLC, think like an attacker, test the risky areas, and safely handle all input.</p></div>
+<div class="card"><h2>Chapter flow</h2><p><span class="badge">Ch 1</span> Why software security matters → risk → touchpoints → threat modeling.</p><p><span class="badge">Ch 2</span> Put security into every SDLC phase → SAMM → ISO 27034 → OWASP/CWE.</p><p><span class="badge">Ch 3</span> One major implementation problem: untrusted input → validation → SQL injection → prevention.</p></div>
+<div class="card"><h2>High-yield structured areas</h2><ol><li>RMF steps.</li><li>Seven software security touchpoints.</li><li>Threat modeling process.</li><li>Security activities in each SDLC phase.</li><li>OWASP vs CWE.</li><li>Syntactical vs semantic validation.</li><li>Explain SQL injection + mitigation.</li></ol></div>
+<div class="card"><h2>How to answer 10-mark questions</h2><p><b>Definition → key points/steps → example → security effect.</b></p><div class="examtip">Example: “Parameterized queries separate SQL code from user data. A placeholder is used, so malicious input is treated as a value rather than executable SQL. This mitigates SQL injection.”</div></div>
+</div>
+</section>
+
+<section id="notes" class="view">
+<input id="noteSearch" class="search" placeholder="Search notes: e.g. STRIDE, SAMM, SQL injection, semantic...">
+<div id="noteContainer">
+<div class="card note"><h2>Chapter 1 — Overview of Software Security</h2>
+<details open><summary>1. What is software security?</summary><p>Engineering software so it continues to function correctly even under malicious attack. Security should be addressed <b>early</b>, not bolted on only after development.</p><div class="memory"><b>Easy idea:</b> Quality asks “works correctly?” Security asks “still works safely when attacked?”</div></details>
+<details><summary>2. CIA Triad</summary><table><tr><th>C</th><td><b>Confidentiality</b> — prevent unauthorized disclosure.</td></tr><tr><th>I</th><td><b>Integrity</b> — prevent unauthorized alteration.</td></tr><tr><th>A</th><td><b>Availability</b> — information/service is available when required.</td></tr></table></details>
+<details><summary>3. Defect, Bug, Flaw, Failure, Risk, Vulnerability</summary><table>
+<tr><th>Term</th><th>Easy meaning</th><th>Example</th></tr>
+<tr><td>Defect</td><td>Deviates from requirement/specification</td><td>Requirement says password ≥8 chars; app accepts 5.</td></tr>
+<tr><td>Bug</td><td>Coding/implementation error</td><td>Login button crashes app.</td></tr>
+<tr><td>Flaw</td><td>Design/architecture/logic weakness</td><td>Passwords stored in plaintext.</td></tr>
+<tr><td>Failure</td><td>Software cannot perform required function</td><td>Service fails to process login.</td></tr>
+<tr><td>Risk</td><td>Probability × impact of a problem</td><td>Chance and consequence of account compromise.</td></tr>
+<tr><td>Vulnerability</td><td>Exploitable weakness/error</td><td>Dynamic SQL vulnerable to injection.</td></tr>
+</table></details>
+<details><summary>4. Three pillars of software security</summary><p><b>Risk Management</b> — identify, rank, track, understand and handle risks.<br><b>Touchpoints</b> — concrete security activities applied during development.<br><b>Knowledge</b> — gather/share principles, guidelines, vulnerabilities, exploits, attack patterns and historical risks.</p><div class="memory"><b>Mnemonic:</b> RTK = Risk, Touchpoints, Knowledge.</div></details>
+<details><summary>5. Risk Management Framework (RMF) — 5 activities</summary><ol><li><b>Understand business context</b> — goals, critical assets/operations, scope.</li><li><b>Identify business & technical risks</b> — threats, vulnerabilities, likelihood, business impact.</li><li><b>Synthesize, prioritize & rank</b> — likelihood, impact, priority.</li><li><b>Define mitigation strategy</b> — cost, time, success likelihood, competence, impact; decide validation.</li><li><b>Carry out fixes & validate</b> — implement mitigation and confirm unacceptable risk is removed/reduced.</li></ol><div class="memory"><b>Remember:</b> Context → Identify → Rank → Mitigate → Validate. Risk management is continuous, not once only.</div></details>
+<details><summary>6. Seven software security touchpoints</summary><ol><li><b>Abuse Cases</b> — think about abnormal/malicious behavior; create anti-requirements and attack models.</li><li><b>Security Requirements</b> — explicitly define security goals and assumptions.</li><li><b>Architectural Risk Analysis</b> — find design flaws using attack resistance, ambiguity and weakness analysis.</li><li><b>Risk-Based Security Testing</b> — inside-out, attacker mindset, starts before system is complete.</li><li><b>Code Review</b> — source-code/static analysis to find security bugs.</li><li><b>Software Penetration Testing</b> — outside-in simulated attack on the final system.</li><li><b>Security Operations</b> — learn from real attacks and feed knowledge back into development.</li></ol></details>
+<details><summary>7. Architectural Risk Analysis — 3 aspects</summary><p><b>Attack Resistance:</b> known attacks/checklists and whether attacks are viable.<br><b>Ambiguity Analysis:</b> creative search for new risks; benefits from multiple experienced analysts.<br><b>Weakness Analysis:</b> risks caused by dependencies/middleware and failed assumptions.</p></details>
+<details><summary>8. Risk-based testing vs penetration testing</summary><p><b>Risk-based security testing:</b> inside-out, based on architecture + attacker mindset, begins before software is complete.<br><b>Penetration testing:</b> outside-in, simulates an external attack, typically on the final system.</p></details>
+<details><summary>9. SDLC</summary><p><b>Planning → Design → Implementation → Testing → Deployment → Maintenance.</b></p></details>
+<details><summary>10. Quality code vs secure code</summary><p><b>Quality:</b> functionality, performance, usability, maintainability.<br><b>Secure:</b> protection against threats/vulnerabilities; supports CIA.</p><div class="memory">High quality ≠ automatically secure. Secure ≠ automatically high quality. Best software needs both.</div></details>
+<details><summary>11. Threat Modeling — purpose and process</summary><p>A structured technique to identify security objectives, threats and vulnerabilities so security decisions can be prioritized.</p><ol><li><b>Identify security objectives</b> — CI4AM: Confidentiality, Integrity, Availability, Authentication, Authorization, Auditing, Management.</li><li><b>Application overview</b> — deployment, users, data, rights, technologies, mechanisms.</li><li><b>Decompose application</b> — entry points, exit points, data flows, trust boundaries.</li><li><b>Identify threats</b> — attack trees, attacker mindset, STRIDE/DREAD, etc.</li><li><b>Identify vulnerabilities</b> — e.g. weak encryption, cleartext credentials, dynamic SQL, long sessions.</li><li><b>Rank threats</b> — probability × impact or DREAD average.</li></ol><p>Risk responses shown in the chapter: <b>accept, mitigate, transfer</b>; ignoring is discouraged.</p></details>
+</div>
+
+<div class="card note"><h2>Chapter 2 — Secure SDLC (SSDLC)</h2>
+<details open><summary>1. OWASP SAMM</summary><p>An open-source software security maturity framework used to assess current practices, plan improvement and measure progress.</p><p><b>5 business functions:</b> Governance, Design, Implementation, Verification, Operations. Each has two practices.</p><table>
+<tr><th>Function</th><th>Practices</th></tr>
+<tr><td>Governance</td><td>Strategy & Metrics; Policy & Compliance</td></tr>
+<tr><td>Design</td><td>Threat Assessment; Security Requirements</td></tr>
+<tr><td>Implementation</td><td>Secure Build; Secure Deployment</td></tr>
+<tr><td>Verification</td><td>Security Testing; Security Review</td></tr>
+<tr><td>Operations</td><td>Incident Management; Environment Management</td></tr>
+</table><p><b>Maturity:</b> Level 1 Ad-hoc/basic → Level 2 Defined/repeatable → Level 3 Optimized/measured/continuous improvement.</p></details>
+<details><summary>2. Application security risk</summary><p>Overall risk considers <b>threat agent + attack vector + security weakness + likelihood + technical/business impact</b>. Technical impact can include privacy loss/data theft/system disablement; business impact can include delayed income and increased expenses.</p></details>
+<details><summary>3. Security in every SDLC phase</summary><table>
+<tr><th>Phase</th><th>Security activities</th></tr>
+<tr><td>Planning & Requirements</td><td>Risk assessment, abuse cases, security requirements.</td></tr>
+<tr><td>Design</td><td>Threat modeling; secure design principles such as least privilege and defense in depth.</td></tr>
+<tr><td>Implementation</td><td>Secure coding; security-focused code reviews.</td></tr>
+<tr><td>Testing</td><td>Static/dynamic analysis, penetration testing, vulnerability scanning, risk-based testing, automated tools.</td></tr>
+<tr><td>Deployment</td><td>Secure configuration; strict access controls.</td></tr>
+<tr><td>Maintenance</td><td>Updates/dependency patching; incident response plan.</td></tr>
+</table></details>
+<details><summary>4. ISO/IEC 27034</summary><p>Application-security framework across the software lifecycle. Key concepts:</p><ul><li><b>ASC:</b> specific Application Security Control, e.g. input validation.</li><li><b>ASCL:</b> reusable library/catalog of ASCs.</li><li><b>ASLC:</b> application security life cycle.</li><li><b>ASMP:</b> management/governance process for application security.</li><li><b>ONF:</b> organizational policies, standards, guidelines and reusable resources.</li></ul><p>Important: ISO/IEC 27034 provides a <b>framework/process</b>; it does not itself give a ready-made control list. Other sources can provide controls.</p></details>
+<details><summary>5. OWASP Top 10 — know the names + meaning</summary><ol><li>Broken Access Control</li><li>Cryptographic Failures</li><li>Injection</li><li>Insecure Design</li><li>Security Misconfiguration</li><li>Vulnerable & Outdated Components</li><li>Identification & Authentication Failures</li><li>Software & Data Integrity Failures</li><li>Security Logging & Monitoring Failures</li><li>Server-Side Request Forgery (SSRF)</li></ol></details>
+<details><summary>6. CWE</summary><p><b>Common Weakness Enumeration</b> = catalog of software coding/design weaknesses. Examples in the chapter include CWE-20 Improper Input Validation, CWE-74 Injection, CWE-120 Buffer Overflow, CWE-287 Improper Authentication, CWE-209 Information Exposure in Error Message, and CWE-200 Information Exposure.</p></details>
+<details><summary>7. OWASP Top 10 vs CWE</summary><p><b>OWASP Top 10:</b> high-level application <b>risk categories</b>, attacker/risk view.<br><b>CWE:</b> detailed <b>weakness/root-cause catalog</b>, developer view.<br>One OWASP category can map to many CWEs.</p></details>
+<details><summary>8. Development methodologies</summary><p><b>Waterfall:</b> linear; security often late/reactive.<br><b>V-Model:</b> testing mapped to stages; limited flexibility.<br><b>Spiral:</b> iterative and risk-driven; security considered early.<br><b>RUP:</b> iterative, architecture-centric; security in requirements/design.<br><b>Agile:</b> speed/adaptability; security may be overlooked.<br><b>Secure Agile/DevSecOps:</b> security every sprint + automated CI/CD testing.<br><b>Microsoft SDL:</b> security throughout phases.<br><b>OWASP SAMM:</b> assess and improve security practices.</p></details>
+</div>
+
+<div class="card note"><h2>Chapter 3 — Handling Input</h2>
+<details open><summary>1. Why input is dangerous</summary><p>Input can come from users, external systems and other sources. Malicious input can become code/data that compromises the application. Therefore, classify, validate and process it securely.</p></details>
+<details><summary>2. Trusted vs untrusted input</summary><p><b>Trusted:</b> reliable sources such as internal systems/trusted users.<br><b>Untrusted:</b> unknown/external sources such as web user input.</p><div class="examtip">Security mindset: never assume user-controlled input is safe just because it “looks normal.”</div></details>
+<details><summary>3. Why validate input?</summary><ol><li>Prevent attacks: SQL injection, XSS, command injection, malicious scripts.</li><li>Protect database integrity.</li><li>Ensure data accuracy.</li><li>Prevent system crash.</li><li>Maintain reliability.</li></ol></details>
+<details><summary>4. Filtering, sanitization, normalization</summary><p><b>Filtering:</b> accept only allowed/good input.<br><b>Sanitization:</b> clean dangerous/dirty input.<br><b>Normalization:</b> convert input to a consistent representation.</p></details>
+<details><summary>5. Syntactical vs semantic validation</summary><p><b>Syntactical = “Does it follow the format?”</b> Example: email contains @, valid domain format, reasonable length, no dangerous characters.</p><p><b>Semantic = “Does it make sense / is it legitimate in this application?”</b> Example: age must be within an allowed range; email ownership can be confirmed through a verification link/code.</p><div class="memory"><b>Mnemonic:</b> Syntax = Shape. Semantic = Sense.</div></details>
+<details><summary>6. Input prevention measures</summary><ul><li>Prepared statements / parameterized queries.</li><li>Input/output encoding where appropriate.</li><li>Check input size to prevent buffer overflow.</li><li>Access control and privilege management.</li><li>Hide raw database errors.</li><li>Use a WAF.</li><li>Keep software/frameworks updated.</li></ul></details>
+<details><summary>7. SQL Injection — exam-ready explanation</summary><p>SQL injection occurs when attacker-controlled input is inserted/appended into an SQL statement and the database interprets that input as SQL code.</p><p><b>Vulnerable idea:</b> build SQL by concatenating user input. An attacker may add a condition such as <b>OR 1=1</b>, causing a condition to become true and exposing unintended records.</p><p><b>Best mitigation emphasized in the chapter:</b> prepared statements / parameterized queries. The SQL structure uses a placeholder and user input is supplied separately, so the DB treats the input as data rather than executable SQL.</p></details>
+<details><summary>8. Sensitive data exposure prevention</summary><p>Do not store sensitive data you do not need. Classify data. Identify what is sensitive based on legal/business needs. Encrypt sensitive data at rest using strong, current algorithms/protocols/keys. The chapter summary also emphasizes protection in transit (e.g. TLS).</p></details>
+</div>
+</div>
+</section>
+
+<section id="compare" class="view">
+<div class="card"><h2>Must-Compare Table — very MCQ/structured friendly</h2>
+<table>
+<tr><th>A</th><th>B</th><th>Key difference</th></tr>
+<tr><td>Bug</td><td>Flaw</td><td>Bug = implementation/coding; flaw = design/architecture/logic.</td></tr>
+<tr><td>Quality code</td><td>Secure code</td><td>Quality focuses normal operation; secure code resists threats/attacks.</td></tr>
+<tr><td>Risk-based testing</td><td>Pen testing</td><td>Inside-out & earlier vs outside-in & final system.</td></tr>
+<tr><td>OWASP Top 10</td><td>CWE</td><td>High-level risks vs detailed weaknesses/root causes.</td></tr>
+<tr><td>Syntactical validation</td><td>Semantic validation</td><td>Correct format/shape vs meaningful/valid business context.</td></tr>
+<tr><td>Filtering</td><td>Sanitization</td><td>Allow only good input vs clean dangerous input.</td></tr>
+<tr><td>Threat</td><td>Vulnerability</td><td>Potential harmful action/actor vs exploitable weakness.</td></tr>
+<tr><td>Authentication</td><td>Authorization</td><td>Who are you? vs What are you allowed to do?</td></tr>
+<tr><td>ASC</td><td>ASCL</td><td>One security control vs reusable catalog of controls.</td></tr>
+<tr><td>Waterfall</td><td>DevSecOps</td><td>Security may be late/reactive vs integrated continuously.</td></tr>
+</table></div>
+</section>
+
+<section id="flashcards" class="view">
+<div class="card">
+<h2>Flashcards</h2><p class="muted">Click the card to flip. Use Known / Review Again to track mastery.</p>
+<div class="flash card" id="flash"></div>
+<div class="controls"><button class="secondary" onclick="prevCard()">← Previous</button><button onclick="markKnown()">✓ Known</button><button class="danger" onclick="markAgain()">× Review Again</button><button class="secondary" onclick="nextCard()">Next →</button><button class="secondary" onclick="shuffleCards()">Shuffle</button></div>
+<p id="flashStat" class="muted"></p>
+</div>
+</section>
+
+<section id="quiz" class="view">
+<div class="card"><h2>Quick Quiz — 10 Questions</h2><p>Immediate feedback after submission. These mix definitions and scenarios.</p><div id="quickQuiz"></div><button onclick="gradeQuick()">Submit Quiz</button><button class="secondary" onclick="resetQuick()">Reset</button><h3 id="quickScore"></h3></div>
+</section>
+
+<section id="mock" class="view">
+<div class="card"><h2>Mock Midterm Examination — 50 Marks</h2><p><b>Section A:</b> 20 MCQ × 1 mark. <b>Section B:</b> 3 structured questions × 10 marks.</p><div class="examtip">Try this closed-book first. Suggested time: 60–75 minutes. For structured answers, write in points and explain each point briefly.</div></div>
+<div class="card"><h2>Section A — MCQ (20 marks)</h2><div id="mockMcq"></div><button onclick="gradeMock()">Submit Section A</button><h3 id="mockScore"></h3></div>
+<div class="card"><h2>Section B — Structured Questions (30 marks)</h2>
+<div class="q"><h3>Q1. Risk Management Framework (10 marks)</h3><p>Explain the five RMF activities used in software security and explain why risk assessment should not be performed only once.</p><textarea placeholder="Write your answer here..."></textarea><details><summary>Show marking guide / model points</summary><ol><li>Understand business context (2)</li><li>Identify business and technical risks (2)</li><li>Synthesize, prioritize and rank risks (2)</li><li>Define mitigation strategy (2)</li><li>Carry out fixes and validate (1)</li><li>Continuous/repeated risk identification because risks change/emerge through project lifecycle (1)</li></ol></details></div>
+<div class="q"><h3>Q2. Secure SDLC Scenario (10 marks)</h3><p>A team is developing an online payment application. Propose suitable security activities for the Planning/Requirements, Design, Implementation, Testing, Deployment and Maintenance phases.</p><textarea placeholder="Write phase → activity → why..."></textarea><details><summary>Show marking guide / model points</summary><p>Planning: risk assessment, abuse cases, security requirements. Design: threat modeling, least privilege/defense in depth. Implementation: secure coding + code review. Testing: static/dynamic analysis, pen testing, vulnerability scanning/risk-based testing. Deployment: secure configuration + access control. Maintenance: updates/dependency patching + incident response. Full marks require phase-appropriate explanation, not just listing tools.</p></details></div>
+<div class="q"><h3>Q3. Input Handling & SQL Injection (10 marks)</h3><p>Explain the difference between syntactical and semantic validation. Then explain how SQL injection happens and describe suitable prevention measures.</p><textarea placeholder="Write your answer here..."></textarea><details><summary>Show marking guide / model points</summary><p>Syntactical: format/syntax checks with example (2). Semantic: business meaning/context/legitimacy with example (2). SQL injection: attacker input becomes part of executable SQL, usually through unsafe concatenation (2). Prepared/parameterized query separates code and data (2). Other relevant controls: validation, least privilege/access control, hide raw DB errors, WAF, updates, appropriate encoding (2).</p></details></div>
+</div>
+</section>
+</main>
+
+<script>
+const flashcards=[
+["What is software security?","Engineering software to function correctly under malicious attack."],
+["CIA: Confidentiality?","Prevent unauthorized disclosure of information."],
+["CIA: Integrity?","Prevent unauthorized alteration of information/settings."],
+["CIA: Availability?","Keep information/services available when required."],
+["Defect vs bug?","Defect violates specification; bug is an implementation/coding error."],
+["What is a flaw?","A weakness in design, architecture, or logic."],
+["Risk formula?","Risk = probability (likelihood) × impact."],
+["What is a vulnerability?","A weakness or error an attacker can exploit."],
+["Three software security pillars?","Risk Management, Touchpoints, Knowledge."],
+["RMF five-step memory chain?","Context → Identify → Rank → Mitigate → Validate."],
+["What are abuse cases?","Anti-requirements/scenarios showing malicious or abnormal use."],
+["Three architectural risk analyses?","Attack Resistance, Ambiguity, Weakness analysis."],
+["Risk-based testing approach?","Inside-out; architecture + attacker mindset; starts early."],
+["Penetration testing approach?","Outside-in simulated attack, typically on final system."],
+["What does Knowledge pillar contain?","Principles, guidelines, rules, vulnerabilities, exploits, attack patterns, risks."],
+["SDLC phases?","Planning → Design → Implementation → Testing → Deployment → Maintenance."],
+["Threat modeling purpose?","Identify security objectives, threats and vulnerabilities to prioritize security."],
+["CI4AM?","Confidentiality, Integrity, Availability, Authentication, Authorization, Auditing, Management."],
+["What is a trust boundary?","A point where the level of trust changes."],
+["OWASP SAMM purpose?","Assess security maturity, plan improvements, measure progress."],
+["SAMM 5 functions?","Governance, Design, Implementation, Verification, Operations."],
+["SAMM maturity levels?","L1 Ad-hoc; L2 Defined/repeatable; L3 Optimized/continuous improvement."],
+["OWASP Top 10 vs CWE?","OWASP = high-level risks; CWE = detailed software weaknesses."],
+["What is CWE-20?","Improper Input Validation."],
+["Syntactical validation?","Checks input format or syntax."],
+["Semantic validation?","Checks meaning, business rules, and contextual validity."],
+["Filtering vs sanitization?","Filtering accepts allowed input; sanitization cleans dangerous input."],
+["What is SQL injection?","Malicious input is interpreted as SQL code by the database."],
+["Best SQL injection mitigation in this chapter?","Prepared statements / parameterized queries."],
+["Why do parameterized queries work?","They separate SQL code from user-supplied data."],
+["How to protect sensitive data?","Minimize collection, classify it, encrypt at rest/in transit, control access."],
+["Why hide raw DB errors?","They can leak technical details useful to attackers."]
+];
+let order=[...Array(flashcards.length).keys()], fi=0, flipped=false;
+let known=JSON.parse(localStorage.getItem("ss_known")||"{}");
+function showFlash(){let [f,b]=flashcards[order[fi]];document.getElementById("flash").innerHTML=(flipped?b:f)+`<small>${flipped?"Answer":"Question"} — click to flip</small>`;document.getElementById("flashStat").textContent=`Card ${fi+1}/${flashcards.length} • Known ${Object.values(known).filter(Boolean).length}/${flashcards.length}`;updateMastery()}
+document.getElementById("flash").onclick=()=>{flipped=!flipped;showFlash()}
+function nextCard(){fi=(fi+1)%order.length;flipped=false;showFlash()} function prevCard(){fi=(fi-1+order.length)%order.length;flipped=false;showFlash()}
+function markKnown(){known[order[fi]]=true;localStorage.setItem("ss_known",JSON.stringify(known));nextCard()} function markAgain(){known[order[fi]]=false;localStorage.setItem("ss_known",JSON.stringify(known));nextCard()}
+function shuffleCards(){order.sort(()=>Math.random()-.5);fi=0;flipped=false;showFlash()}
+function updateMastery(){let pct=Math.round(Object.values(known).filter(Boolean).length/flashcards.length*100);document.getElementById("mastery").textContent=pct+"%";document.getElementById("masterybar").style.width=pct+"%"} showFlash();
+
+const quick=[
+["Which statement best defines a vulnerability?",["A business loss that already happened","An exploitable weakness or error","Any coding style issue","A security control"],1],
+["Which RMF activity comes after identifying business and technical risks?",["Carry out fixes","Understand context","Prioritize and rank risks","Security operations"],2],
+["Which touchpoint is mainly outside-in?",["Risk-based security testing","Penetration testing","Security requirements","Code review"],1],
+["Which SAMM function contains Security Testing and Security Review?",["Governance","Design","Verification","Operations"],2],
+["Which is a detailed weakness catalog?",["OWASP Top 10","CWE","SAMM","CIA"],1],
+["An email has the correct format but belongs to nobody. Which validation is missing?",["Syntactical","Semantic","Normalization","Encoding"],1],
+["Why is string-concatenated SQL dangerous?",["It always causes buffer overflow","Input may be interpreted as SQL code","It encrypts the database","It blocks authentication"],1],
+["Which control most directly prevents SQL injection in database queries?",["Parameterized queries","Longer error messages","Session fixation","Plaintext logging"],0],
+["Which is a Design-phase SSDLC activity?",["Threat modeling","Dependency updates after release","Incident response only","Final user training"],0],
+["High-quality software is automatically secure.",["True","False","Only in Waterfall","Only with WAF"],1]
+];
+function renderQuiz(target,data,prefix){let h="";data.forEach((q,i)=>{h+=`<div class="q"><b>${i+1}. ${q[0]}</b>`;q[1].forEach((o,j)=>h+=`<label><input type="radio" name="${prefix}${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`);h+=`<div class="feedback" id="${prefix}fb${i}"></div></div>`});document.getElementById(target).innerHTML=h}
+renderQuiz("quickQuiz",quick,"qq");
+function gradeSet(data,prefix){let s=0;data.forEach((q,i)=>{let el=document.querySelector(`input[name="${prefix}${i}"]:checked`),fb=document.getElementById(`${prefix}fb${i}`);if(el&&+el.value===q[2]){s++;fb.innerHTML=`<span class="good">✓ Correct</span>`}else{fb.innerHTML=`<span class="bad">✗ Answer: ${String.fromCharCode(65+q[2])}. ${q[1][q[2]]}</span>`}});return s}
+function gradeQuick(){let s=gradeSet(quick,"qq");document.getElementById("quickScore").textContent=`Score: ${s}/10`;localStorage.setItem("ss_quick",s)}
+function resetQuick(){document.querySelectorAll('#quickQuiz input').forEach(x=>x.checked=false);document.querySelectorAll('#quickQuiz .feedback').forEach(x=>x.innerHTML="");document.getElementById("quickScore").textContent=""}
+
+const mock=[
+["Software security primarily aims to:",["Eliminate all software bugs","Ensure software functions correctly under malicious attack","Replace software testing","Improve UI design"],1],
+["Which CIA property prevents unauthorized modification?",["Confidentiality","Integrity","Availability","Authentication"],1],
+["A password requirement says ≥8 characters, but the app accepts 5. This is best described as:",["Defect","Threat","Attack vector","Encryption failure"],0],
+["Which statement about risk is correct?",["Risk is only impact","Risk relates likelihood/probability and impact","Risk equals vulnerability only","Risk is always accepted"],1],
+["Which is NOT one of the three pillars?",["Risk Management","Touchpoints","Knowledge","Encryption"],3],
+["What is the final RMF activity?",["Identify threats","Carry out fixes and validate","Write code","Create user interface"],1],
+["Which touchpoint creates anti-requirements?",["Abuse Cases","Code Review","Penetration Testing","Security Operations"],0],
+["Which analysis searches creatively for new architectural risks?",["Attack Resistance","Ambiguity Analysis","Weakness Analysis","Static Analysis"],1],
+["Risk-based security testing is mainly:",["Outside-in and only after release","Inside-out and based on architecture plus attacker mindset","Only functional testing","Only vulnerability scanning"],1],
+["A trust boundary indicates:",["Where trust level changes","Where source code ends","Only the database password","A backup location"],0],
+["Which SAMM maturity level is optimized and continuously improved?",["Level 0","Level 1","Level 2","Level 3"],3],
+["Which activity belongs in Planning & Requirements?",["Risk assessment","Secure deployment only","Patch after release only","Final penetration test only"],0],
+["Least privilege and defense in depth are emphasized in which phase?",["Design","Maintenance only","Deployment only","Operations only"],0],
+["ISO/IEC 27034 ASC means:",["Application Security Control","Automated Source Code Library","Application Server Configuration List","Attack Surface Control Level"],0],
+["Which statement best describes OWASP Top 10 vs CWE?",["Both are identical lists","OWASP is high-level risks; CWE is detailed weaknesses","CWE is only for networks","OWASP contains only CVEs"],1],
+["Which input is generally treated as untrusted?",["User input from the web","A hardcoded constant","A verified internal configuration","Compiled program instruction"],0],
+["Syntactical validation checks:",["Business meaning only","Format and syntax","Whether a user owns an email account only","Database encryption"],1],
+["Semantic validation checks:",["Whether data makes sense under application rules","Only character length","Only whether @ exists","Only HTML encoding"],0],
+["An attacker enters input that changes a dynamically built SQL statement. This is:",["Session fixation","SQL injection","SSRF","Buffer overflow"],1],
+["Why do prepared statements mitigate SQL injection?",["They hide the website","They separate query structure from user data","They remove authentication","They make all input trusted"],1]
+];
+renderQuiz("mockMcq",mock,"mq");
+function gradeMock(){let s=gradeSet(mock,"mq");document.getElementById("mockScore").textContent=`Section A score: ${s}/20`;localStorage.setItem("ss_mock",s)}
+
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.view).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})});
+document.getElementById("noteSearch").addEventListener("input",e=>{let v=e.target.value.toLowerCase();document.querySelectorAll(".note").forEach(n=>n.style.display=n.innerText.toLowerCase().includes(v)?"block":"none")});
+updateMastery();
+</script>
+</body></html>
